@@ -8,6 +8,7 @@
 //first commit
 import UIKit
 import CoreData
+import moltin
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

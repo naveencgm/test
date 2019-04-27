@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C5ADDCD22745EAB007BAA1B /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5ADDCC22745EAB007BAA1B /* CartViewController.swift */; };
 		9C8626D82274532200A5A4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8626D72274532200A5A4C1 /* AppDelegate.swift */; };
 		9C8626DA2274532200A5A4C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8626D92274532200A5A4C1 /* ViewController.swift */; };
 		9C8626DD2274532200A5A4C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8626DB2274532200A5A4C1 /* Main.storyboard */; };
 		9C8626E02274532200A5A4C1 /* naveenTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C8626DE2274532200A5A4C1 /* naveenTest.xcdatamodeld */; };
 		9C8626E22274532300A5A4C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C8626E12274532300A5A4C1 /* Assets.xcassets */; };
 		9C8626E52274532300A5A4C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8626E32274532300A5A4C1 /* LaunchScreen.storyboard */; };
+		9E1FE83E2CDC29455CE63463 /* Pods_naveenTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58BBE7B68BC0B2CE03CC566 /* Pods_naveenTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C5ADDCC22745EAB007BAA1B /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		9C8626D42274532200A5A4C1 /* naveenTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = naveenTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C8626D72274532200A5A4C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C8626D92274532200A5A4C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,9 @@
 		9C8626E12274532300A5A4C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C8626E42274532300A5A4C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C8626E62274532300A5A4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7812EBF03BBA9B93478B5AD /* Pods-naveenTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naveenTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-naveenTest/Pods-naveenTest.release.xcconfig"; sourceTree = "<group>"; };
+		E58BBE7B68BC0B2CE03CC566 /* Pods_naveenTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naveenTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5BAFD1975E9A3DA88E31CE0 /* Pods-naveenTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naveenTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naveenTest/Pods-naveenTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E1FE83E2CDC29455CE63463 /* Pods_naveenTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		767194180178570F6F0E8E4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E58BBE7B68BC0B2CE03CC566 /* Pods_naveenTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		79D5BD26012B3EC6D5890CCA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5BAFD1975E9A3DA88E31CE0 /* Pods-naveenTest.debug.xcconfig */,
+				B7812EBF03BBA9B93478B5AD /* Pods-naveenTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9C8626CB2274532200A5A4C1 = {
 			isa = PBXGroup;
 			children = (
 				9C8626D62274532200A5A4C1 /* naveenTest */,
 				9C8626D52274532200A5A4C1 /* Products */,
+				79D5BD26012B3EC6D5890CCA /* Pods */,
+				767194180178570F6F0E8E4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +84,7 @@
 			children = (
 				9C8626D72274532200A5A4C1 /* AppDelegate.swift */,
 				9C8626D92274532200A5A4C1 /* ViewController.swift */,
+				9C5ADDCC22745EAB007BAA1B /* CartViewController.swift */,
 				9C8626DB2274532200A5A4C1 /* Main.storyboard */,
 				9C8626E12274532300A5A4C1 /* Assets.xcassets */,
 				9C8626E32274532300A5A4C1 /* LaunchScreen.storyboard */,
@@ -74,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C8626E92274532300A5A4C1 /* Build configuration list for PBXNativeTarget "naveenTest" */;
 			buildPhases = (
+				D6014C9309B59C5DE1E76608 /* [CP] Check Pods Manifest.lock */,
 				9C8626D02274532200A5A4C1 /* Sources */,
 				9C8626D12274532200A5A4C1 /* Frameworks */,
 				9C8626D22274532200A5A4C1 /* Resources */,
+				890261EE8826C4967B03A8A5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,11 +162,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		890261EE8826C4967B03A8A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-naveenTest/Pods-naveenTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Moltin/moltin.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moltin.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-naveenTest/Pods-naveenTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6014C9309B59C5DE1E76608 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-naveenTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C8626D02274532200A5A4C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C5ADDCD22745EAB007BAA1B /* CartViewController.swift in Sources */,
 				9C8626E02274532200A5A4C1 /* naveenTest.xcdatamodeld in Sources */,
 				9C8626DA2274532200A5A4C1 /* ViewController.swift in Sources */,
 				9C8626D82274532200A5A4C1 /* AppDelegate.swift in Sources */,
@@ -284,6 +361,7 @@
 		};
 		9C8626EA2274532300A5A4C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5BAFD1975E9A3DA88E31CE0 /* Pods-naveenTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,6 +379,7 @@
 		};
 		9C8626EB2274532300A5A4C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7812EBF03BBA9B93478B5AD /* Pods-naveenTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

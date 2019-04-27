@@ -1,0 +1,16 @@
+PODS:
+  - Moltin (3.0.11)
+
+DEPENDENCIES:
+  - Moltin
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Moltin
+
+SPEC CHECKSUMS:
+  Moltin: 344fea0ce42beeecb4692c39fb7b71fdd46394b4
+
+PODFILE CHECKSUM: 884e8127b9388d5219814714b40500ae1207d5f7
+
+COCOAPODS: 1.5.3
