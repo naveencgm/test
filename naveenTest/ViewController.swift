@@ -47,7 +47,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func getData()
     {
 
-        myMoltin.product.include([.mainImage]).all { result in
+        myMoltin.product.all { result in
             switch result
             {
             case .success(let response):
@@ -82,6 +82,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let price = (bookModel.price![0].amount) / 100
         //not worried about the accuarcy  for now
         cell.detailTextLabel?.text = "$" + String(price)
+
+//
+//        myMoltin.product.include([.mainImage]).get(forID: bookModel.id) { result in
+//            switch result {
+//            case .success(let response):
+//                print(response)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
 
 
         //image
