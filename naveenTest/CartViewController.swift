@@ -30,7 +30,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     override func viewWillAppear(_ animated: Bool)
     {
-        getCartItems(id: "")
+        getCartItems()
     }
 
     func configureTableView()
@@ -44,15 +44,16 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
 
 
-    func getCartItems(id:String)
+    func getCartItems()
     {
         let referenceId = AppDelegate.cartID
 
-        self.myMoltin.cart.items(forCartID: currentCarId) { (result) in
+        self.myMoltin.cart.items(forCartID: referenceId) { (result) in
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
-                    print("Cart items:", result.data)
+                    self.tableArray = result.data ?? []
+                    self.tableview.reloadData()
                 }
             case .failure(let error):
                 print("Cart error:", error)
@@ -66,31 +67,10 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
-
-
-        let bookModel = tableArray[indexPath.row]
-        cell.textLabel?.text = bookModel.name
-
-
-        //its in int
-
-        let price = 78 //Float(bookModel.price![0].amount)/100
-        //not worried about the accuarcy  for now
-        cell.detailTextLabel?.text = "$" + String(price)
-
+        let cartItem = tableArray[indexPath.row]
+        cell.textLabel?.text = cartItem.name
         //cannot get url,unknownk size issue
         cell.imageView?.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "bookImage"))
-
-        let button : UIButton = UIButton(type:UIButton.ButtonType.roundedRect) as UIButton
-        button.frame = CGRect(x: cell.contentView.frame.width - 65, y: 30, width: 100, height: 25)
-        button.setTitleColor(UIColor.white, for:.normal)
-        button.backgroundColor = .black
-        button.addTarget(self, action: #selector(checkout), for: .touchUpInside)
-        button.setTitle("Checkout", for: .normal)
-        cell.addSubview(button)
-
-        //important
-        button.tag = indexPath.row
         return cell
     }
 
@@ -130,18 +110,6 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     @objc  func checkout(sender:UIButton)
     {
-        let product = tableArray[sender.tag]
-
-        HUD.show(.progress)
-        self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart: AppDelegate.cartID, completionHandler: { (_) in
-            DispatchQueue.main.async {
-
-                HUD.show(.success)
-                HUD.hide()
-
-            }
-        })
-
 
 
     }
@@ -151,15 +119,13 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     @objc   func increaseCount()
     {
-        let vc = CartViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+
     }
 
 
     @objc   func decreaseCount()
     {
-        let vc = CartViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+
     }
 
 

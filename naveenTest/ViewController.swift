@@ -140,27 +140,41 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
   @objc  func addToCart(sender:UIButton)
     {
+        HUD.show(.progress)
         let product = tableArray[sender.tag]
 
-        self.myMoltin.cart.get(forID: AppDelegate.cartID, completionHandler: { (result) in
-            switch result {
-            case .success(let result):
-                DispatchQueue.main.async {
-                    print("Cart:", result.id)
-                    currentCarId = result.id
-                    
-                    self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart:result.id, completionHandler: { (_) in
-                        DispatchQueue.main.async {
+        self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart:AppDelegate.cartID, completionHandler: { (response) in
+                                    DispatchQueue.main.async {
 
-                            HUD.hide()
-                        }
-                    })
-                }
-            case .failure(let error):
-                print("Cart error:", error)
-            }
-        })
-        }
+                                        print(response)
+
+                                        HUD.hide()
+                                    }
+                                })
+
+
+
+//        self.myMoltin.cart.get(forID: AppDelegate.cartID, completionHandler: { (result) in
+//            switch result {
+//            case .success(let result):
+//                DispatchQueue.main.async {
+//                    print("Cart:", result.id)
+//                    currentCarId = result.id
+//
+//                    self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart:result.id, completionHandler: { (response) in
+//                        DispatchQueue.main.async {
+//
+//                            print(response)
+//
+//                            HUD.hide()
+//                        }
+//                    })
+//                }
+//            case .failure(let error):
+//                print("Cart error:", error)
+//            }
+//        })
+}
 
 
 

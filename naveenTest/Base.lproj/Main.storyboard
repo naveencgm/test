@@ -28,13 +28,38 @@
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="63.418290854572717"/>
         </scene>
+        <!--Cart View Controller-->
+        <scene sceneID="2Te-ev-YB9">
+            <objects>
+                <viewController id="FeZ-iS-8Pr" customClass="CartViewController" customModule="naveenTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lP8-ou-Ms6" customClass="Car">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bt0-9J-c3T">
+                                <rect key="frame" x="55" y="109" width="240" height="322"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SWw-ff-gwZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZH1-nd-9XO"/>
+                    <connections>
+                        <outlet property="tableView" destination="bt0-9J-c3T" id="nUu-pz-lYM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3QC-fb-13e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1901.5999999999999" y="-9.4452773613193415"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="zUt-xo-sbe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZY3-oN-CuB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mio-wa-O3I">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
