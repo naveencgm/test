@@ -12,12 +12,17 @@ import moltin
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     let tableview = UITableView()
-    let tableArray = [AnyObject]()
+    var tableArray = [AnyObject]()
+
+    let moltin = Moltin(withClientID:moltinCLientId)
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         configureTableView()
+
+        self.title = "Naveen book shop"
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -29,6 +34,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func configureTableView()
     {
+        self.view = tableview
         self.tableview.delegate = self
         self.tableview.dataSource = self
         self.tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -37,25 +43,35 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func getData()
     {
+        moltin.product.all { (Result<PaginatedResponse<Array<Decodable & Encodable>>>
+            ) in
+            <#code#>
+        }
 
-        let del = UIApplication.shared.delegate as! AppDelegate
-
-        del.moltin.product.all { result in
-            switch result {
+        moltin.product.all { result in
+            switch result
+            {
             case .success(let response):
-                print(response)
+
+                self.tableArray = response.data ?? []
+
+                print(response.data)
             case .failure(let error):
                 print(error)
             }
         }
     }
 
+
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableview.dequeueReusableCell(withIdentifier: "cell")
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
+
 
       //  let dataDict = Dictionary<Key: Hashable, Any>()
-        cell?.textLabel?.text = ""//tableArray[indexPath.row]
+        cell.textLabel?.text = ""//tableArray[indexPath.row]
         return cell
     }
 

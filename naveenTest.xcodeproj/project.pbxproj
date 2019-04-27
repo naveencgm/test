@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C5ADDCD22745EAB007BAA1B /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5ADDCC22745EAB007BAA1B /* CartViewController.swift */; };
+		9C5ADDCF22746637007BAA1B /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5ADDCE22746637007BAA1B /* Credentials.swift */; };
 		9C8626D82274532200A5A4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8626D72274532200A5A4C1 /* AppDelegate.swift */; };
 		9C8626DA2274532200A5A4C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8626D92274532200A5A4C1 /* ViewController.swift */; };
 		9C8626DD2274532200A5A4C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8626DB2274532200A5A4C1 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		9C5ADDCC22745EAB007BAA1B /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		9C5ADDCE22746637007BAA1B /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		9C8626D42274532200A5A4C1 /* naveenTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = naveenTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C8626D72274532200A5A4C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C8626D92274532200A5A4C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				9C8626E32274532300A5A4C1 /* LaunchScreen.storyboard */,
 				9C8626E62274532300A5A4C1 /* Info.plist */,
 				9C8626DE2274532200A5A4C1 /* naveenTest.xcdatamodeld */,
+				9C5ADDCE22746637007BAA1B /* Credentials.swift */,
 			);
 			path = naveenTest;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			files = (
 				9C5ADDCD22745EAB007BAA1B /* CartViewController.swift in Sources */,
 				9C8626E02274532200A5A4C1 /* naveenTest.xcdatamodeld in Sources */,
+				9C5ADDCF22746637007BAA1B /* Credentials.swift in Sources */,
 				9C8626DA2274532200A5A4C1 /* ViewController.swift in Sources */,
 				9C8626D82274532200A5A4C1 /* AppDelegate.swift in Sources */,
 			);
