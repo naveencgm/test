@@ -9,6 +9,7 @@
 import UIKit
 import moltin
 import SDWebImage
+import PKHUD
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
@@ -24,7 +25,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()
         self.title = "Naveens book Shop"
         configureTableView()
-        addCheckoutButton()
+
 
 
 
@@ -41,21 +42,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.view = tableview
         self.tableview.delegate = self
         self.tableview.dataSource = self
-        self.tableview.tableFooterView = UIView(frame: .zero)
+      //  self.tableview.tableFooterView = UIView(frame: .zero)
         self.tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
-    func addCheckoutButton()
-    {
-        let checkOutCartButton = UIButton(frame: CGRect(x: 0, y:100, width: self.view.frame.width, height: 30))
-        checkOutCartButton.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        checkOutCartButton.setTitle("Checkout", for: .normal)
-        checkOutCartButton.layer.cornerRadius = 2
-        checkOutCartButton.setTitleColor(UIColor.white, for:.normal)
-        checkOutCartButton.addTarget(self, action: #selector(self.goToCart), for: .touchUpInside)
-        self.view.addSubview(checkOutCartButton)
-    }
-    
 
     func getData()
     {
@@ -98,17 +88,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
        //cannot get url,unknownk size issue
         cell.imageView?.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "bookImage"))
 
-        let addToCartButton = UIButton()
-        addToCartButton.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        addToCartButton.setTitle("Add to cart", for: .normal)
-        addToCartButton.layer.cornerRadius = 2
-        addToCartButton.setTitleColor(UIColor.white, for:.normal)
-        addToCartButton.addTarget(self, action: #selector(self.addToCart), for: .touchUpInside)
-        cell.contentView.addSubview(addToCartButton)
+        let button : UIButton = UIButton(type:UIButton.ButtonType.roundedRect) as UIButton
+        button.frame = CGRect(x: cell.contentView.frame.width - 65, y: 30, width: 100, height: 25)
+        button.setTitleColor(UIColor.white, for:.normal)
+        button.backgroundColor = .black
+        button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
+        button.setTitle("Add to cart", for: .normal)
+        cell.addSubview(button)
 
         //important
-        addToCartButton.tag = indexPath.row
-
+        button.tag = indexPath.row
         return cell
     }
 
@@ -125,12 +114,46 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //
     }
 
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+
+        let checkOutCartButton =  UIButton(frame: CGRect(x: 0, y:10, width: self.view.frame.width - 20, height: 30))
+        checkOutCartButton.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        checkOutCartButton.setTitle("Checkout", for: .normal)
+        checkOutCartButton.layer.cornerRadius = 15
+        checkOutCartButton.setTitleColor(UIColor.white, for:.normal)
+        checkOutCartButton.backgroundColor = .blue
+        checkOutCartButton.addTarget(self, action: #selector(self.goToCart), for: .touchUpInside)
+
+        return checkOutCartButton
+
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+       return 50.0
+    }
+
     //cart Logic
 
   @objc  func addToCart(sender:UIButton)
     {
+        let product = tableArray[sender.tag]
 
-    }
+            HUD.show(.progress)
+            self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart: AppDelegate.cartID, completionHandler: { (_) in
+                DispatchQueue.main.async {
+
+                    HUD.show(.success)
+                    HUD.hide()
+
+                }
+            })
+
+
+
+        }
+
+
 
 
  @objc   func goToCart()
