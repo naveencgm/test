@@ -84,6 +84,7 @@
 		9C8626D62274532200A5A4C1 /* naveenTest */ = {
 			isa = PBXGroup;
 			children = (
+				9C5ADDCE22746637007BAA1B /* Credentials.swift */,
 				9C8626D72274532200A5A4C1 /* AppDelegate.swift */,
 				9C8626D92274532200A5A4C1 /* ViewController.swift */,
 				9C5ADDCC22745EAB007BAA1B /* CartViewController.swift */,
@@ -92,7 +93,6 @@
 				9C8626E32274532300A5A4C1 /* LaunchScreen.storyboard */,
 				9C8626E62274532300A5A4C1 /* Info.plist */,
 				9C8626DE2274532200A5A4C1 /* naveenTest.xcdatamodeld */,
-				9C5ADDCE22746637007BAA1B /* Credentials.swift */,
 			);
 			path = naveenTest;
 			sourceTree = "<group>";
@@ -176,12 +176,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-naveenTest/Pods-naveenTest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Moltin/moltin.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/moltin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

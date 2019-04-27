@@ -6,7 +6,7 @@ target 'naveenTest' do
   use_frameworks!
 
 pod 'Moltin'
-
+pod 'SDWebImage'
 
   # Pods for naveenTest
 

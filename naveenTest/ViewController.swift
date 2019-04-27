@@ -8,13 +8,16 @@
 
 import UIKit
 import moltin
+import SDWebImage
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    let tableview = UITableView()
-    var tableArray = [AnyObject]()
 
-    let moltin = Moltin(withClientID:moltinCLientId)
+    let myMoltin = Moltin(withClientID:moltinCLientId)
+
+    let tableview = UITableView()
+    var tableArray = [moltin.Product]()
+
 
     override func viewDidLoad()
     {
@@ -43,21 +46,23 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func getData()
     {
-        moltin.product.all { (Result<PaginatedResponse<Array<Decodable & Encodable>>>
-            ) in
-            <#code#>
-        }
 
-        moltin.product.all { result in
+
+
+        myMoltin.product.all { result in
             switch result
             {
             case .success(let response):
 
-                self.tableArray = response.data ?? []
+                DispatchQueue.main.async(execute: {
+                    self.tableArray = response.data as! [moltin.Product]
+                    self.tableview.reloadData()
 
-                print(response.data)
+                })
+
+                print(response)
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }
@@ -69,9 +74,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
 
+        let bookModel = tableArray[indexPath.row]
 
-      //  let dataDict = Dictionary<Key: Hashable, Any>()
-        cell.textLabel?.text = ""//tableArray[indexPath.row]
+        cell.textLabel?.text = bookModel.name
+
+
+
+        //its in int
+        let price = (bookModel.price![0].amount) / 100
+        //not worried about the accuarcy  for now
+        cell.detailTextLabel?.text = "$" + String(price)
+
+
+        //image
+        let imageLink = bookModel.mainImage?.link
+        print(imageLink)
+
+       // cell.imageView.sd_setImage(with: URL(string: imageLink), placeholderImage: UIImage(named: "bookImage"))
+
         return cell
     }
 

@@ -1,16 +1,22 @@
 PODS:
   - Moltin (3.0.11)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
 
 DEPENDENCIES:
   - Moltin
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Moltin
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Moltin: 344fea0ce42beeecb4692c39fb7b71fdd46394b4
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: 884e8127b9388d5219814714b40500ae1207d5f7
+PODFILE CHECKSUM: 7aa012d610c85aaecd0aea1ea6d0c9859018c257
 
 COCOAPODS: 1.5.3
