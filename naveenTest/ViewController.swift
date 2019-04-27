@@ -142,14 +142,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     {
         let product = tableArray[sender.tag]
 
-            HUD.show(.progress)
-            self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart:AppDelegate.cartID, completionHandler: { (_) in
+        self.myMoltin.cart.get(forID: AppDelegate.cartID, completionHandler: { (result) in
+            switch result {
+            case .success(let result):
                 DispatchQueue.main.async {
-                    HUD.show(.success)
-                    HUD.hide()
+                    print("Cart:", result.id)
+                    currentCarId = result.id
+                    
+                    self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart:result.id, completionHandler: { (_) in
+                        DispatchQueue.main.async {
+
+                            HUD.hide()
+                        }
+                    })
                 }
-            })
+            case .failure(let error):
+                print("Cart error:", error)
+            }
+        })
         }
+
 
 
  @objc   func goToCart()

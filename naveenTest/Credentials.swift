@@ -9,6 +9,6 @@
 let moltinCLientId =  "MBzksFzsvqRX7IdGhnvKRGrY9XqJLJHRoo1TOjkLON"
 
 
-
+var currentCarId = ""
 
 

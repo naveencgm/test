@@ -43,36 +43,23 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
 
-    func getCartData()
+
+    func getCartItems(id:String)
     {
-        self.myMoltin.cart.get(forID: AppDelegate.cartID, completionHandler: { (result)
-            in
+        let referenceId = AppDelegate.cartID
+
+        self.myMoltin.cart.items(forCartID: currentCarId) { (result) in
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
-print(result.meta?.displayPrice)
+                    print("Cart items:", result.data)
                 }
             case .failure(let error):
                 print("Cart error:", error)
             }
-        })
+        }
     }
 
-
-    func getCartItems(id:String)
-    {
-                self.myMoltin.cart.items(forCartID: AppDelegate.cartID) { (result) in
-                    switch result {
-                    case .success(let result):
-                        DispatchQueue.main.async {
-        print(result.data)
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-
-    }
 
 
 
