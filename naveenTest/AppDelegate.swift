@@ -14,7 +14,7 @@ import moltin
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let moltin = Moltin(withClientID: "MBzksFzsvqRX7IdGhnvKRGrY9XqJLJHRoo1TOjkLON")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
