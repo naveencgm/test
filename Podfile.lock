@@ -1,4 +1,5 @@
 PODS:
+  - Cartography (3.1.0)
   - Moltin (3.0.11)
   - PKHUD (5.2.0)
   - SDWebImage (4.4.3):
@@ -6,21 +7,24 @@ PODS:
   - SDWebImage/Core (4.4.3)
 
 DEPENDENCIES:
+  - Cartography
   - Moltin
   - PKHUD
   - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Cartography
     - Moltin
     - PKHUD
     - SDWebImage
 
 SPEC CHECKSUMS:
+  Cartography: 1988b7578871a56c036e7af17195cb2190edf18c
   Moltin: 344fea0ce42beeecb4692c39fb7b71fdd46394b4
   PKHUD: dd5357ac65f26115c35c4a68e9b328053326c5fe
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: c5e04ea2c16127d0e9355aca1a9c7a632bf27969
+PODFILE CHECKSUM: bc364518c9520d4762cb10a566ee9863609e6d88
 
 COCOAPODS: 1.5.3

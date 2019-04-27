@@ -49,21 +49,25 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func getData()
     {
+        HUD.show(.progress)
 
         myMoltin.product.all { result in
             switch result
             {
             case .success(let response):
 
+                HUD.hide()
                 DispatchQueue.main.async(execute: {
                     self.tableArray = response.data ?? []
                     self.tableview.reloadData()
+                    HUD.hide()
 
                 })
 
                 print(response)
             case .failure(let error):
                 print(error)
+                HUD.hide()
             }
         }
     }

@@ -8,6 +8,7 @@ target 'naveenTest' do
 pod 'Moltin'
 pod 'SDWebImage'
 pod 'PKHUD'
+pod 'Cartography'
 
   # Pods for naveenTest
 
