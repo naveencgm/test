@@ -30,7 +30,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     override func viewWillAppear(_ animated: Bool)
     {
-        getCartData()
+        getCartItems(id: "")
     }
 
     func configureTableView()
@@ -45,20 +45,33 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func getCartData()
     {
-HUD.show(.progress)
-        self.myMoltin.cart.include([.products]).items(forCartID: AppDelegate.cartID) { (result) in
+        self.myMoltin.cart.get(forID: AppDelegate.cartID, completionHandler: { (result)
+            in
             switch result {
             case .success(let result):
                 DispatchQueue.main.async {
-                    self.tableArray = result.data ?? []
-                    HUD.hide()
-                    print(result.data)
+print(result.meta?.displayPrice)
                 }
             case .failure(let error):
-                HUD.hide()
                 print("Cart error:", error)
             }
-        }
+        })
+    }
+
+
+    func getCartItems(id:String)
+    {
+                self.myMoltin.cart.items(forCartID: AppDelegate.cartID) { (result) in
+                    switch result {
+                    case .success(let result):
+                        DispatchQueue.main.async {
+        print(result.data)
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+
     }
 
 

@@ -49,25 +49,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func getData()
     {
-        HUD.show(.progress)
+
 
         myMoltin.product.all { result in
             switch result
             {
             case .success(let response):
 
-                HUD.hide()
+             
                 DispatchQueue.main.async(execute: {
                     self.tableArray = response.data ?? []
                     self.tableview.reloadData()
-                    HUD.hide()
 
                 })
 
                 print(response)
             case .failure(let error):
                 print(error)
-                HUD.hide()
+
             }
         }
     }
@@ -144,20 +143,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let product = tableArray[sender.tag]
 
             HUD.show(.progress)
-            self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart: AppDelegate.cartID, completionHandler: { (_) in
+            self.myMoltin.cart.addProduct(withID: product.id , ofQuantity: 1, toCart:AppDelegate.cartID, completionHandler: { (_) in
                 DispatchQueue.main.async {
-
                     HUD.show(.success)
                     HUD.hide()
-
                 }
             })
-
-
-
         }
-
-
 
 
  @objc   func goToCart()
