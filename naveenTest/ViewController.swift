@@ -22,9 +22,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.title = "Naveens book Shop"
         configureTableView()
+        addCheckoutButton()
 
-        self.title = "Naveen book shop"
+
 
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -32,7 +34,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewWillAppear(_ animated: Bool)
     {
         getData()
-
     }
 
     func configureTableView()
@@ -40,9 +41,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.view = tableview
         self.tableview.delegate = self
         self.tableview.dataSource = self
+        self.tableview.tableFooterView = UIView(frame: .zero)
         self.tableview.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
+    func addCheckoutButton()
+    {
+        let checkOutCartButton = UIButton(frame: CGRect(x: 0, y:100, width: self.view.frame.width, height: 30))
+        checkOutCartButton.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        checkOutCartButton.setTitle("Checkout", for: .normal)
+        checkOutCartButton.layer.cornerRadius = 2
+        checkOutCartButton.setTitleColor(UIColor.white, for:.normal)
+        checkOutCartButton.addTarget(self, action: #selector(self.goToCart), for: .touchUpInside)
+        self.view.addSubview(checkOutCartButton)
+    }
+    
 
     func getData()
     {
@@ -69,36 +82,32 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
 
         let bookModel = tableArray[indexPath.row]
-
         cell.textLabel?.text = bookModel.name
 
 
-
         //its in int
-        let price = (bookModel.price![0].amount) / 100
+
+        let price = Float(bookModel.price![0].amount)/100
         //not worried about the accuarcy  for now
         cell.detailTextLabel?.text = "$" + String(price)
 
-//
-//        myMoltin.product.include([.mainImage]).get(forID: bookModel.id) { result in
-//            switch result {
-//            case .success(let response):
-//                print(response)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-
-
-        //image
-        let imageLink = bookModel.mainImage?.link
-        print(imageLink)
-
+       //cannot get url,unknownk size issue
         cell.imageView?.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "bookImage"))
+
+        let addToCartButton = UIButton()
+        addToCartButton.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        addToCartButton.setTitle("Add to cart", for: .normal)
+        addToCartButton.layer.cornerRadius = 2
+        addToCartButton.setTitleColor(UIColor.white, for:.normal)
+        addToCartButton.addTarget(self, action: #selector(self.addToCart), for: .touchUpInside)
+        cell.contentView.addSubview(addToCartButton)
+
+        //important
+        addToCartButton.tag = indexPath.row
 
         return cell
     }
@@ -114,6 +123,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
+    }
+
+    //cart Logic
+
+  @objc  func addToCart(sender:UIButton)
+    {
+
+    }
+
+
+ @objc   func goToCart()
+    {
+        let vc = CartViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 
 
