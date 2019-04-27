@@ -47,22 +47,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func getData()
     {
 
-
-
-        myMoltin.product.all { result in
+        myMoltin.product.include([.mainImage]).all { result in
             switch result
             {
             case .success(let response):
 
                 DispatchQueue.main.async(execute: {
-                    self.tableArray = response.data as! [moltin.Product]
+                    self.tableArray = response.data ?? []
                     self.tableview.reloadData()
 
                 })
 
                 print(response)
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }
@@ -90,7 +88,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let imageLink = bookModel.mainImage?.link
         print(imageLink)
 
-       // cell.imageView.sd_setImage(with: URL(string: imageLink), placeholderImage: UIImage(named: "bookImage"))
+        cell.imageView?.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "bookImage"))
 
         return cell
     }
